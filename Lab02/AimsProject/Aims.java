@@ -7,14 +7,42 @@ public class Aims {
 
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", 
         "Roger Allers",87, 19.95f);
-        anOrder.addDigitalVideoDisc(dvd1);
+        //anOrder.addDigitalVideoDisc(dvd1);
 
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", 
         "George Lucas",87, 24.95f);
-        anOrder.addDigitalVideoDisc(dvd2);
+        anOrder.addDigitalVideoDisc(dvd1, dvd2);
 
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
         anOrder.addDigitalVideoDisc(dvd3);
+        
+        DigitalVideoDisc[] dvds = {
+            new DigitalVideoDisc("Aladin", "Animation", 18.99f),
+            new DigitalVideoDisc("The Lion King", "Animation", 19.99f),
+            new DigitalVideoDisc("Inception", "Sci-Fi", 22.50f),
+            new DigitalVideoDisc("The Godfather", "Crime", 25.00f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f),
+            new DigitalVideoDisc("Interstellar", "Sci-Fi", 20.99f)};       
+        anOrder.addDigitalVideoDisc(dvds);
+
+        DigitalVideoDisc dvd5 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+        anOrder.addDigitalVideoDisc(dvd5);
 
         System.out.println(anOrder.totalCost());
         
@@ -25,9 +53,6 @@ public class Aims {
         anOrder.addDigitalVideoDisc(dvd4);
         anOrder.showCart();
         System.out.println(anOrder.totalCost());
-        anOrder.removeDigitalVideoDisc(dvd1);
-        anOrder.removeDigitalVideoDisc(dvd3);
-        anOrder.removeDigitalVideoDisc(dvd4);
-        anOrder.removeDigitalVideoDisc(dvd4);
+
     }
 }
