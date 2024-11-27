@@ -19,7 +19,30 @@ public class Cart {
             System.out.println("Cart Full"); 
         }
     }
-    
+        //method overloading of addDigitalVideoDisc by differing types of parameters (2.1 lab03)
+	public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList){
+        if (qtyOrdered + dvdList.length < MAX_NUMBERS_ORDERED) {
+            for (int i=0; i < dvdList.length; i++){
+                itemsOrdered[qtyOrdered] = dvdList[i];
+                qtyOrdered++;
+            }
+            System.out.println("Discs Added to Cart"); 
+        } else {
+            System.out.println("Cart Full"); 
+        }
+    }
+    //method overloading of addDigitalVideoDisc by differing number of parameters (2.2 lab03)
+    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+        if (qtyOrdered + 2 < MAX_NUMBERS_ORDERED) {
+            itemsOrdered[qtyOrdered] = dvd1;
+            itemsOrdered[qtyOrdered+1] = dvd2;
+            qtyOrdered = qtyOrdered + 2;
+            System.out.println("Discs Added to Cart"); 
+            }
+        else {
+            System.out.println("Cart Full"); 
+        }
+    }
     // Method to remove a DVD from the cart
     public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
         for (int i = 0; i < qtyOrdered; i++) {
