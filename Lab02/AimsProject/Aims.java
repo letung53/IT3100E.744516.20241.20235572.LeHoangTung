@@ -24,10 +24,8 @@ public class Aims {
         DigitalVideoDisc dvd4 = new DigitalVideoDisc("Avengers", "Science Fiction","Joss Whedon", 99999.99f);
         anOrder.addDigitalVideoDisc(dvd4);
         anOrder.showCart();
-        System.out.println(anOrder.totalCost());
-        anOrder.removeDigitalVideoDisc(dvd1);
-        anOrder.removeDigitalVideoDisc(dvd3);
-        anOrder.removeDigitalVideoDisc(dvd4);
-        anOrder.removeDigitalVideoDisc(dvd4);
+        anOrder.searchID(1);
+        anOrder.searchTitle("The Lion Kidfng");
+
     }
 }
