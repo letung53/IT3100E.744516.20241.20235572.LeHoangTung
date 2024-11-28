@@ -3,7 +3,7 @@ package hust.soict.dsai.aims.cart;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class Cart {
-    public static final int MAX_NUMBERS_ORDERED = 20; // Maximum of 20 DVDs in one cart
+    private static final int MAX_NUMBERS_ORDERED = 20; 
     private DigitalVideoDisc[] itemsOrdered = new DigitalVideoDisc[MAX_NUMBERS_ORDERED]; // Array to store DVDs
     private int qtyOrdered; // Number of DVDs currently in the cart
 

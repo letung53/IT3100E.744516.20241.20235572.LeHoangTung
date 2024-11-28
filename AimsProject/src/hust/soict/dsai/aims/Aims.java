@@ -2,6 +2,7 @@ package hust.soict.dsai.aims;
 
 import hust.soict.dsai.aims.cart.Cart;      
 import hust.soict.dsai.aims.disc.DigitalVideoDisc; 
+import hust.soict.dsai.aims.book.Book; 
 import hust.soict.dsai.aims.store.Store;              
 import hust.soict.dsai.aims.test.TestPassingParameter;  
 public class Aims {
@@ -32,6 +33,9 @@ public class Aims {
         anOrder.showCart();
         anOrder.searchID(1);
         anOrder.searchTitle("The Lion Kidfng");
+
+        Book book1 = new Book("Title", "Category", new String[] {"Author"}, 199);
+        book1.addAuthor(book1, "HHIHIHIHI");
 
     }
 }
