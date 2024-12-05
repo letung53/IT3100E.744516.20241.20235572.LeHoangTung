@@ -1,32 +1,33 @@
 package hust.soict.dsai.aims.store;
-import java.util.LinkedList;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc; 
-public class Store {
-    private LinkedList<DigitalVideoDisc> itemsInStore = new LinkedList<DigitalVideoDisc>();
+import java.util.ArrayList;
+import hust.soict.dsai.aims.Media.Media; 
 
-    private boolean checkDVD(DigitalVideoDisc disc){
-        for (DigitalVideoDisc discInlist : itemsInStore){
+public class Store {
+    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+
+    private boolean checkMedia(Media disc){
+        for (Media discInlist : itemsInStore){
             if (discInlist.equals(disc)){
                 return true;
             }
         }
         return false;
     }
-    public void removeDVD(DigitalVideoDisc disc){
-        if (checkDVD(disc)){
-            itemsInStore.remove(disc);
-            System.out.println(disc.getTitle()+"have been removed!");
+    public void removeMedia(Media item){
+        if (checkMedia(item)){
+            itemsInStore.remove(item);
+            System.out.println(item.getTitle()+"have been removed!");
         }
         else{
-            System.out.println(disc.getTitle()+"is not in the store!");
+            System.out.println(item.getTitle()+"is not in the store!");
         }
     }
-    public void addDVD(DigitalVideoDisc disc){
-    if (!checkDVD(disc)){
-        itemsInStore.add(disc);
-        System.out.println(disc.getTitle()+"is added to the store!");
+    public void addMedia(Media item){
+    if (!checkMedia(item)){
+        itemsInStore.add(item);
+        System.out.println(item.getTitle()+"is added to the store!");
     }else{
-        System.out.println("Cannot add because "+disc.getTitle()+" is already in the store!");
+        System.out.println("Cannot add because "+item.getTitle()+" is already in the store!");
         }
     }
     @Override //redefine the method inside object of java
@@ -34,13 +35,12 @@ public class Store {
         StringBuilder string = new StringBuilder("****************STORE***************\nitems in the store: \n");
         if(itemsInStore.isEmpty()) string.append("There is no dvd in the store !\n");
         else {
-            for (DigitalVideoDisc dvd : itemsInStore) {
-                string.append(dvd.getTitle() + " - " + dvd.getCost() + " $\n");
+            for (Media item : itemsInStore) {
+                string.append(item.getTitle() + " - " + item.getCost() + " $\n");
             }
         }
         string.append("***************************************");
         return string.toString();
     }
-
 }
 
