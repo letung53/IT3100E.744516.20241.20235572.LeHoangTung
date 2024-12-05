@@ -1,6 +1,7 @@
 package hust.soict.dsai.aims.cart;
 
-import java.util.ArrayList;
+import java.util.*;
+
 import hust.soict.dsai.aims.Media.Media;
 
 
@@ -49,8 +50,8 @@ public class Cart {
     }
 
     public void removeMedia(Media remItem) {
-        if (itemsOrdered.remove(remItem)) { // Removes the item if it exists in the list
-            qtyOrdered--; // Decrease the quantity if removal was successful
+        if (itemsOrdered.remove(remItem)) { 
+            qtyOrdered--; 
             System.out.println("Removed Media " + remItem.getTitle() + " from Cart.");
         } else {
             System.out.println("Cannot find Media in Cart.");
@@ -99,6 +100,14 @@ public class Cart {
             System.out.println("DVD with ID " + id + " not found.");
         }
     }
+    public Media removebyTitle(String title) {
+		for (Media media : itemsOrdered) {
+			if (media.getTitle().equals(title)) {
+				return media;
+			}
+		}
+		return null;
+	}
     public void searchTitle(String title) {
         boolean found = false; 
         
@@ -111,6 +120,72 @@ public class Cart {
         }
         if (!found) {
             System.out.println("DVD with Title " + title + " not found.");
+        }
+    }
+    public void searchByPrice(float maxCost) {
+        boolean matchFound = false;
+        for (Media media : itemsOrdered) {
+            if (media.getCost() <= maxCost) {
+                System.out.println("Found " + media);
+                matchFound = true;
+            }
+        }
+        if (!matchFound) {
+            System.out.println("Sorry, no media were found that match the maximum cost provided!");
+        }
+    }
+
+    public void searchByPrice(float minCost, float maxCost) {
+        boolean matchFound = false;
+        for (Media media : itemsOrdered) {
+            if (media.getCost() >= minCost && media.getCost() <= maxCost) {
+                System.out.println("Found " + media);
+                matchFound = true;
+            }
+        }
+        if (!matchFound) {
+            System.out.println("Sorry, no media were found that match the cost range between your specified minimum and maximum!");
+        }
+    }
+    public void searchByCategory(String category) {
+        boolean found = false;
+        for (Media media : itemsOrdered) {
+            if (media.getCategory().equalsIgnoreCase(category)) {
+                System.out.println("Found " + media);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Sorry, no media matching the \"" + category + "\" category were found!");
+        }
+    }
+    public void sortMediaByTitle() {
+        Collections.sort((List<Media>)itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+        Iterator<Media> iterator = itemsOrdered.iterator();
+        iterator = itemsOrdered.iterator();
+    
+        while (iterator.hasNext()) {
+            System.out.println(((Media)iterator.next()).toString());
+        }
+    }
+    public void sortMediaByCost() {
+        Collections.sort((List<Media>)itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+        Iterator<Media> iterator = itemsOrdered.iterator();
+        iterator = itemsOrdered.iterator();
+    
+        while (iterator.hasNext()) {
+            System.out.println(((Media)iterator.next()).toString());
+        }
+    }
+    public void empty() {
+        if (itemsOrdered.size() == 0) {
+            System.out.println("Nothing to remove!");
+        } else {
+            qtyOrdered = 0;
+            itemsOrdered.clear();
+            System.out.println("Order created.");
+            System.out.println("Current cart empty!");
+            System.out.println();
         }
     }
 }

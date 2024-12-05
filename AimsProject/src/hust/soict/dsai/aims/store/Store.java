@@ -30,6 +30,14 @@ public class Store {
         System.out.println("Cannot add because "+item.getTitle()+" is already in the store!");
         }
     }
+    public Media searchTitle(String title) {
+		for (Media media : itemsInStore) {
+			if (media.getTitle().equals(title)) {
+				return media;
+			}
+		}
+		return null;
+	}
     @Override //redefine the method inside object of java
     public String toString() {
         StringBuilder string = new StringBuilder("****************STORE***************\nitems in the store: \n");
