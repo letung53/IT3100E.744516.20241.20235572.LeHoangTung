@@ -1,8 +1,10 @@
-package hust.soict.dsai.aims;
-import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.Media.*;
-import hust.soict.dsai.aims.store.Store;
+package hust.soict.cybersec.aims;
+import hust.soict.cybersec.aims.cart.Cart;
+import hust.soict.cybersec.aims.media.*;
+import hust.soict.cybersec.aims.store.Store;
 import java.util.*;
+
+import javax.naming.LimitExceededException;
 
 public class Aims {
     private static Store store = new Store();
@@ -54,104 +56,52 @@ public class Aims {
             System.out.println();
         }
     }
-    // store setup 
+    // init store setup 
     public static void initSetup() {
 
-        // Adding more DVDs
-DigitalVideoDisc dvd1 = new DigitalVideoDisc("Inception", "Science Fiction", "Christopher Nolan", 148, 15.50f);     
-DigitalVideoDisc dvd2 = new DigitalVideoDisc("Finding Nemo", "Animation", "Andrew Stanton", 100, 10.99f); 
-DigitalVideoDisc dvd3 = new DigitalVideoDisc("The Dark Knight", "Action", "Christopher Nolan", 152, 12.75f);
-DigitalVideoDisc dvd4 = new DigitalVideoDisc("Interstellar", "Science Fiction", "Christopher Nolan", 169, 18.00f);
-DigitalVideoDisc dvd5 = new DigitalVideoDisc("The Matrix", "Action", "The Wachowskis", 136, 20.00f);
-DigitalVideoDisc dvd6 = new DigitalVideoDisc("Parasite", "Thriller", "Bong Joon Ho", 132, 14.95f);
-DigitalVideoDisc dvd7 = new DigitalVideoDisc("Avengers: Endgame", "Action", "Anthony and Joe Russo", 181, 19.99f);
-DigitalVideoDisc dvd8 = new DigitalVideoDisc("Coco", "Animation", "Lee Unkrich", 105, 12.00f);
-DigitalVideoDisc dvd9 = new DigitalVideoDisc("Joker", "Drama", "Todd Phillips", 122, 16.50f);
-DigitalVideoDisc dvd10 = new DigitalVideoDisc("Tenet", "Action", "Christopher Nolan", 150, 22.00f);
+        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);     
+        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star War", "Science Fiction", "George Lucas", 87, 24.95f); 
+        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+        store.addMedia(dvd1);
+        store.addMedia(dvd2);
+        store.addMedia(dvd3);
 
-store.addMedia(dvd1);
-store.addMedia(dvd2);
-store.addMedia(dvd3);
-store.addMedia(dvd4);
-store.addMedia(dvd5);
-store.addMedia(dvd6);
-store.addMedia(dvd7);
-store.addMedia(dvd8);
-store.addMedia(dvd9);
-store.addMedia(dvd10);
+    
+        Book book = new Book("The Valley of Fear", "Detective", 20.00f);
+        Book book1 = new Book("A Living Remedy: A Memoir", "Biography", 202.00f);
+        Book book2 = new Book("On the Origin of Time: Stephen Hawking's Final Theory", "Science", 120.00f);
+        store.addMedia(book);
+        store.addMedia(book1);
+        store.addMedia(book2);
 
-// Adding more Books
-Book book1 = new Book("To Kill a Mockingbird", "Fiction", 18.99f);
-Book book2 = new Book("1984", "Dystopian", 22.50f);
-Book book3 = new Book("Sapiens: A Brief History of Humankind", "Non-Fiction", 25.00f);
-Book book4 = new Book("The Hobbit", "Fantasy", 15.75f);
-Book book5 = new Book("Becoming", "Biography", 30.00f);
-Book book6 = new Book("The Catcher in the Rye", "Classic", 18.00f);
-Book book7 = new Book("The Great Gatsby", "Classic", 20.00f);
-Book book8 = new Book("Educated", "Memoir", 22.95f);
-Book book9 = new Book("Pride and Prejudice", "Romance", 12.99f);
-Book book10 = new Book("Dune", "Science Fiction", 28.50f);
 
-store.addMedia(book1);
-store.addMedia(book2);
-store.addMedia(book3);
-store.addMedia(book4);
-store.addMedia(book5);
-store.addMedia(book6);
-store.addMedia(book7);
-store.addMedia(book8);
-store.addMedia(book9);
-store.addMedia(book10);
+        CompactDisc cd1 = new CompactDisc("Adele - 30", "Music","Adele", 1500.98f);
+        Track track1CD1 = new Track("All Night Parking (interlude)", 161);
+        Track track2CD1 = new Track("To Be Loved", 403);
+        Track track3CD1 = new Track("Woman Like Me", 300);
+        cd1.addTrack(track1CD1);
+        cd1.addTrack(track2CD1);
+        cd1.addTrack(track3CD1);
 
-// Adding more Compact Discs
-CompactDisc cd1 = new CompactDisc("Abbey Road", "Music", "The Beatles", 1200.75f);
-Track track1CD1 = new Track("Come Together", 259);
-Track track2CD1 = new Track("Something", 182);
-Track track3CD1 = new Track("Here Comes The Sun", 185);
-cd1.addTrack(track1CD1);
-cd1.addTrack(track2CD1);
-cd1.addTrack(track3CD1);
+        CompactDisc cd2 = new CompactDisc("The Gods We Can Touch", "Music","Aurora", 2000.22f);
+        Track track1CD2 = new Track("Everything Matters", 180+34);
+        Track track2CD2 = new Track("Blood in the Wine", 180+30);
+        Track track3CD2 = new Track("Artemis", 60*2+39);
+        cd2.addTrack(track1CD2);
+        cd2.addTrack(track2CD2);
+        cd2.addTrack(track3CD2);
 
-CompactDisc cd2 = new CompactDisc("Folklore", "Music", "Taylor Swift", 1100.99f);
-Track track1CD2 = new Track("The 1", 210);
-Track track2CD2 = new Track("Exile", 260);
-Track track3CD2 = new Track("Cardigan", 240);
-cd2.addTrack(track1CD2);
-cd2.addTrack(track2CD2);
-cd2.addTrack(track3CD2);
+        CompactDisc cd3 = new CompactDisc("Purpose", "Music","Justin Bieber", 1000.98f);
+        Track track1CD3 = new Track("The Feeling", 4*60+5);
+        Track track2CD3 = new Track("No Sense", 4*60+35);
+        cd3.addTrack(track1CD3);
+        cd3.addTrack(track2CD3);
 
-CompactDisc cd3 = new CompactDisc("Random Access Memories", "Music", "Daft Punk", 1350.00f);
-Track track1CD3 = new Track("Get Lucky", 370);
-Track track2CD3 = new Track("Instant Crush", 337);
-Track track3CD3 = new Track("Lose Yourself to Dance", 348);
-cd3.addTrack(track1CD3);
-cd3.addTrack(track2CD3);
-cd3.addTrack(track3CD3);
-
-CompactDisc cd4 = new CompactDisc("Rumors", "Music", "Fleetwood Mac", 1500.45f);
-Track track1CD4 = new Track("Dreams", 275);
-Track track2CD4 = new Track("The Chain", 280);
-Track track3CD4 = new Track("Go Your Own Way", 230);
-cd4.addTrack(track1CD4);
-cd4.addTrack(track2CD4);
-cd4.addTrack(track3CD4);
-
-CompactDisc cd5 = new CompactDisc("Thriller", "Music", "Michael Jackson", 1550.00f);
-Track track1CD5 = new Track("Wanna Be Startin' Somethin'", 362);
-Track track2CD5 = new Track("Thriller", 358);
-Track track3CD5 = new Track("Beat It", 258);
-cd5.addTrack(track1CD5);
-cd5.addTrack(track2CD5);
-cd5.addTrack(track3CD5);
-
-store.addMedia(cd1);
-store.addMedia(cd2);
-store.addMedia(cd3);
-store.addMedia(cd4);
-store.addMedia(cd5);
-
-clearConsole();
-
+        store.addMedia(cd1);
+        store.addMedia(cd2);
+        store.addMedia(cd3);
+        
+        clearConsole();
     }
     
     // Print method
@@ -168,7 +118,7 @@ clearConsole();
     public static void storeMenu(Scanner scanner) {
         boolean back = false;
         while (!back) {
-            store.toString();
+            store.print();
             System.out.println("Options: ");
             System.out.println("--------------------------------");
             System.out.println("1. See a media's details");
@@ -194,7 +144,7 @@ clearConsole();
                             clearConsole();
                             break;
                         }
-                        Media media = store.searchTitle(title);
+                        Media media = store.search(title);
                         if (media != null) {
                             clearConsole();
                             System.out.println("Details: ");
@@ -215,9 +165,13 @@ clearConsole();
                             clearConsole();
                             break;
                         }
-                        Media media = store.searchTitle(title);
+                        Media media = store.search(title);
                         if (media != null) {
-                            cart.addMedia(media);
+                            try {
+                                cart.addMedia(media);
+                            } catch (LimitExceededException e) {
+                                e.printStackTrace();
+                            }
                             foundToAdd = true;
                         } else {
                             System.out.println("***MEDIA NOT FOUND***");
@@ -233,7 +187,7 @@ clearConsole();
                             clearConsole();
                             break;
                         }
-                        Media media = store.searchTitle(title);
+                        Media media = store.search(title);
                         if (media != null) {
                             if (media instanceof Disc || media instanceof CompactDisc) {
                                 media.play();
@@ -275,7 +229,11 @@ clearConsole();
                     back = true;
                     break;
                 case 1:
-                    cart.addMedia(media);
+                    try {
+                        cart.addMedia(media);
+                    } catch (LimitExceededException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 2:
                     if (media instanceof Disc || media instanceof CompactDisc) {
@@ -294,7 +252,7 @@ clearConsole();
     public static void cartMenu(Scanner scanner) {
         boolean back = false;
         while (!back) {
-            cart.toString();
+            cart.print();
             System.out.println("Options: ");
             System.out.println("--------------------------------");
             System.out.println("1. Filter medias in cart");
@@ -326,7 +284,7 @@ clearConsole();
                                 clearConsole();
                                 break;
                             }
-                            cart.searchID(id);
+                            cart.searchByID(id);
                             found = true;
                         } else if (filterOption == 2) {
                             System.out.println("Enter the title to filter (type 0 to stop):");
@@ -335,7 +293,7 @@ clearConsole();
                                 clearConsole();
                                 break;
                             }
-                            cart.searchTitle(title);
+                            cart.searchByTitle(title);
                             found = true;
                         } else if (filterOption == 0) {
                             clearConsole();
@@ -366,7 +324,7 @@ clearConsole();
                             clearConsole();
                             break;
                         }
-                        Media media = cart.removebyTitle(title);
+                        Media media = cart.searchToRemove(title);
                         if (media != null) {
                             clearConsole();
                             cart.removeMedia(media);
@@ -385,7 +343,7 @@ clearConsole();
                             clearConsole();
                             break;
                         }
-                        Media media = store.searchTitle(title);
+                        Media media = store.search(title);
                         if (media != null) {
                             if (media instanceof Disc || media instanceof CompactDisc) {
                                 media.play();
@@ -506,7 +464,7 @@ clearConsole();
                             clearConsole();
                             break;
                         }
-                        Media media = store.searchTitle(titleForRemove);
+                        Media media = store.search(titleForRemove);
                         if (media != null) {
                             clearConsole();
                             store.removeMedia(media);
